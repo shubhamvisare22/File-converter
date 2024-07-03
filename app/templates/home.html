@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Converter</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">File Converter</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        PDF to Word
+                    </div>
+                    <div class="card-body">
+                        <form id="pdfToWordForm" action="{{ url_for('pdf_to_word_view') }}" method="post"
+                            enctype="multipart/form-data" novalidate>
+                            <div class="form-group">
+                                <label for="pdf_file">Upload PDF File:</label>
+                                <input type="file" name="upload_file" class="form-control-file" id="pdf_file"
+                                    accept=".pdf" required>
+                            </div>
+                            <button type="submit" id="to_word" class="btn btn-primary btn-block">Convert to
+                                Word</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        Word to PDF
+                    </div>
+                    <div class="card-body">
+                        <form id="wordToPdfForm" action="{{ url_for('word_to_pdf_view') }}" method="post"
+                            enctype="multipart/form-data" novalidate>
+                            <div class="form-group">
+                                <label for="word_file">Upload Word File:</label>
+                                <input type="file" name="upload_file" class="form-control-file" id="word_file"
+                                    accept=".docx" required>
+                            </div>
+                            <button type="submit" id="to_pdf" class="btn btn-primary btn-block">Convert to PDF</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="loaderOverlay">
+        <div class="overlay-content">
+            <div class="loader" id="loader"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script src="{{ url_for('static', filename='js/base.js') }}" ></script>
+
+
+</body>
+
+</html>
